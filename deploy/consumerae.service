@@ -1,0 +1,14 @@
+[Unit]
+Description=ConsumerAE UAE FL 15/2020, FDL 5/2023 & CR 66/2023 Consumer Protection Studio
+After=network-online.target
+
+[Service]
+Type=simple
+WorkingDirectory=/opt/consumerae
+EnvironmentFile=/etc/consumerae/.env
+ExecStart=/usr/bin/node --no-warnings /opt/consumerae/server/index.mjs
+Restart=on-failure
+RestartSec=3
+
+[Install]
+WantedBy=default.target

@@ -1,0 +1,20 @@
+services:
+  consumerae:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: consumerae
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:4251:4251"
+    environment:
+      NODE_ENV: production
+      HOST: 0.0.0.0
+      PORT: 4251
+      CONSUMERAE_DATA_DIR: /app/data
+      BASE_PATH: ${BASE_PATH:-}
+    volumes:
+      - consumerae_data:/app/data
+
+volumes:
+  consumerae_data:
